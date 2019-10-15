@@ -4,8 +4,8 @@ jobs:
     
     working_directory: ~/circleci-camel
 
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
+    machine:
+      - image: circleci/classic:latest
 
     steps:
 
@@ -20,6 +20,6 @@ jobs:
           paths:
             - ~/.m2
           key: circleci-camel-{{ checksum "pom.xml" }}
-      
+
       - store_test_results:
           path: target/surefire-reports
