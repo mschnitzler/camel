@@ -14,7 +14,7 @@ jobs:
       - restore_cache:
           key: circleci-camel-{{ checksum "pom.xml" }}
       
-      - run: mvn clean install
+      - run: export MAVEN_OPTS="-Xms2048m -Xmx3584m" && mvn clean install
       
       - save_cache:
           paths:
