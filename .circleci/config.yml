@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    
+    working_directory: ~/circleci-camel
+
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          key: circleci-camel-{{ checksum "pom.xml" }}
+      
+      - run: mvn dependency:go-offline
+      
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: circleci-camel-{{ checksum "pom.xml" }}
+      
+      - run: mvn clean install
+      
+      - store_test_results:
+          path: target/surefire-reports
