@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/circleci-camel
 
     machine:
-      - image: circleci/classic:latest
+      image: circleci/classic:latest
 
     steps:
 
