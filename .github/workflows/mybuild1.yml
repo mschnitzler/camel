@@ -19,7 +19,7 @@ name: my build
 
 on: 
   workflow_dispatch:
-    [ CAMEL-15578-build ]
+    branches: [ CAMEL-15578-build ]
   push:
     branches: [ CAMEL-15578-build ]
   pull_request:
